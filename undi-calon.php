@@ -20,7 +20,6 @@ $notel = $_SESSION['notel'];
 
 // Semak sama ada pengguna telah membuat undian
 $arahan_semak = "
-    "
     SELECT *
     FROM undian
     JOIN calon ON undian.id_calon = calon.id_calon
