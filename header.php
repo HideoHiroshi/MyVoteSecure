@@ -1,5 +1,5 @@
 <?php
-$tarikh = "2025-10-10 23:59:59"; // tarikh akhir mengundi 
+$tarikh = "2025-12-31 23:59:59"; // tarikh akhir mengundi 
 ?>
 <!DOCTYPE html>
 <html lang="ms">
@@ -13,8 +13,8 @@ $tarikh = "2025-10-10 23:59:59"; // tarikh akhir mengundi
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
-        <h1>
+    <header class="site-header">      
+        <h1>                      
             <i class="fas fa-vote-yea"></i> MyVoteSecure - Undian Online
         </h1>
         

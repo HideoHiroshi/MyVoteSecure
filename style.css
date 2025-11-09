@@ -63,6 +63,12 @@ body {
     margin-bottom: 30px;
 }
 
+.logo-wrapper {
+    background: var(--bg-white); /* matches your header */
+    display: inline-block;
+    padding: 2px;
+}
+
 .site-header h1 {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
