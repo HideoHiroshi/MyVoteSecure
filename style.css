@@ -38,6 +38,9 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     padding-bottom: 100px;
+    background-image: url("images/background.png") !important;
+    background-repeat: no-repeat;
+    background-size: 1631.48px 796px;
 }
 
 /* Container */
