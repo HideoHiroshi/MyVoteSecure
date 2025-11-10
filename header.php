@@ -1,5 +1,5 @@
 <?php
-$tarikh = "2025-12-31 23:59:59"; // tarikh akhir mengundi 
+$tarikh = "2025-12-31 11:59:59"; // tarikh akhir mengundi 
 ?>
 <!DOCTYPE html>
 <html lang="ms">
