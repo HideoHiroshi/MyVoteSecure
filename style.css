@@ -115,6 +115,14 @@ body {
     transform: translateY(-2px);
 }
 
+/* Active navigation state */
+.nav-links a.active {
+    background: var(--primary-color);
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
 .nav-separator {
     color: var(--text-light);
     user-select: none;
