@@ -55,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     class="form-control" 
                     placeholder="Contoh: 0123456789"
                     required
+                    pattern="[0-9]{10,13}"
+                    title="Nombor telefon mestilah 10-13 digit"
                 >
             </div>
 
@@ -93,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="text-center mt-3">
             <p style="color: var(--text-light);">
                 Belum mempunyai akaun? 
-                <a href="signup.php" style="color: var(--primary-color); font-weight: 600;">
+                <a href="signup.php" style="color: var(--primary-dark); font-weight: 600; transition: color 0.3s ease;" onmouseover="this.style.color='#1e3a8a'" onmouseout="this.style.color='var(--primary-dark)'">
                     Daftar di sini
                 </a>
             </p>

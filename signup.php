@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </button>
                 </div>
                 <small style="color: var(--text-light); display: block; margin-top: 5px;">
-                    * Katalaluan mestilah sekurang-kurangnya 6 huruf
+                    * Katalaluan mestilah sekurang-kurangnya 6 aksara
                 </small>
             </div>
 
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="text-center mt-3">
             <p style="color: var(--text-light);">
                 Sudah mempunyai akaun? 
-                <a href="login.php" style="color: var(--primary-color); font-weight: 600;">
+                <a href="login.php" style="color: var(--primary-color); font-weight: 600; transition: color 0.3s ease;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary-color)'">
                     Log masuk di sini
                 </a>
             </p>
