@@ -17,7 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_array($result);
         $_SESSION['notel']          = $row['notel'];
+<<<<<<< HEAD
         $_SESSION['nama']           = $row['nama'];
+=======
+        $_SESSION['nama']          = $row['nama'];
+>>>>>>> master
         $_SESSION['jenis_pengguna'] = $row['jenis_pengguna'];
 
         echo "<script> 

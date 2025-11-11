@@ -12,18 +12,23 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
 
 <div class="container">
     <!-- Welcome Banner -->
-    <div class="card fade-in" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 40px;">
+    <div class="card fade-in" style="background: <?php echo (!empty($_SESSION['jenis_pengguna'])) ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent'; ?>; color: white; text-align: center; padding: 45px;">
         <h2 style="margin: 0 0 15px 0; font-size: 2rem;">
             <i class="fas fa-vote-yea"></i> 
             <?php 
             if (!empty($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "admin" && !empty($_SESSION['nama'])) {
                 echo "Selamat Datang " . htmlspecialchars($_SESSION['nama']);
+<<<<<<< HEAD
+=======
+            } elseif (!empty($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "pengundi" && !empty($_SESSION['nama'])) {
+                echo "Selamat Datang Anda Boleh Mula Mengundi Sekarang";
+>>>>>>> master
             } else {
                 echo "Selamat Datang ke MyVoteSecure";
             }
             ?>
         </h2>
-        <p style="font-size: 1.1rem; margin: 0;">
+        <p style="font-size: 1.2rem; margin: 0;">
             Sistem Undian Online yang Selamat dan Mudah
         </p>
     </div>
