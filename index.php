@@ -12,7 +12,7 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
 
 <div class="container">
     <!-- Welcome Banner -->
-    <div class="card fade-in" style="background: <?php echo (!empty($_SESSION['jenis_pengguna'])) ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent'; ?>; color: white; text-align: center; padding: 45px;">
+    <div style="background: <?php echo (!empty($_SESSION['jenis_pengguna'])) ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent'; ?>; color: black; text-align: center; padding: 45px;">
         <h2 style="margin: 0 0 15px 0; font-size: 2rem;">
             <i class="fas fa-vote-yea"></i> 
             <?php 
@@ -25,13 +25,13 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
             }
             ?>
         </h2>
-        <p style="font-size: 1.2rem; margin: 0;">
+        <p style="font-size: 1.4rem; margin: 0;">
             Sistem Undian Online yang Selamat dan Mudah
         </p>
     </div>
 
     <!-- Voting Status -->
-    <div class="card fade-in" style="margin-top: 30px;">
+    <div style="margin-top: 30px;">
         <?php if ($voting_active) { ?>
             <div class="alert alert-success">
                 <i class="fas fa-check-circle" style="font-size: 1.5rem;"></i>
@@ -125,7 +125,7 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
 
     <?php } else { ?>
         <!-- Guest View -->
-        <div class="card fade-in" style="margin-top: 30px; text-align: center; padding: 50px 30px;">
+        <div style="background: white; border-radius: 15px; margin-top: 30px; text-align: center; padding: 50px 30px; box-shadow: var(--shadow-lg);">
             <i class="fas fa-vote-yea" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 20px;"></i>
             <h2 style="margin: 0 0 15px 0; color: var(--text-dark);">
                 Sistem Undian Online MyVoteSecure
@@ -168,7 +168,7 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
 
 <style>
     .card:hover {
-        transform: translateY(-5px);
+        transform: none (-5px);
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 </style>
