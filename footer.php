@@ -11,6 +11,77 @@
 
     <!-- JavaScript for interactivity -->
     <script>
+        // Professional Custom Modal Function
+        function showModal(type, title, message, redirectUrl = null, autoClose = false) {
+            // Create modal overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'custom-modal-overlay';
+            
+            // Determine icon based on type
+            let icon = '';
+            let iconClass = '';
+            let buttonClass = '';
+            
+            if (type === 'success') {
+                icon = '<i class="fas fa-check-circle"></i>';
+                iconClass = 'success';
+                buttonClass = 'success-btn';
+            } else if (type === 'error') {
+                icon = '<i class="fas fa-times-circle"></i>';
+                iconClass = 'error';
+                buttonClass = 'danger-btn';
+            } else if (type === 'warning') {
+                icon = '<i class="fas fa-exclamation-triangle"></i>';
+                iconClass = 'warning';
+                buttonClass = 'warning-btn';
+            }
+            
+            // Create modal content
+            overlay.innerHTML = `
+                <div class="custom-modal">
+                    <div class="modal-icon ${iconClass}">
+                        ${icon}
+                    </div>
+                    <h2 class="modal-title">${title}</h2>
+                    <p class="modal-message">${message}</p>
+                    <button class="modal-button ${buttonClass}" onclick="closeModal(${redirectUrl ? `'${redirectUrl}'` : 'null'})">
+                        <i class="fas fa-check"></i> OK
+                    </button>
+                </div>
+            `;
+            
+            // Add to body
+            document.body.appendChild(overlay);
+            
+            // Auto close if specified
+            if (autoClose) {
+                setTimeout(() => {
+                    closeModal(redirectUrl);
+                }, 2000);
+            }
+            
+            // Close on overlay click
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closeModal(redirectUrl);
+                }
+            });
+        }
+        
+        // Close Modal Function
+        function closeModal(redirectUrl = null) {
+            const overlay = document.querySelector('.custom-modal-overlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.remove();
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                }, 300);
+            }
+        }
+
         // Password toggle function
         function togglePassword(inputId, button) {
             const passwordInput = document.getElementById(inputId);

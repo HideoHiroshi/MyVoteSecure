@@ -3,6 +3,17 @@ session_start();
 include('header.php');
 include('connection.php');
 
+// Check if user just signed up successfully
+$show_signup_modal = false;
+$signup_name = '';
+if (isset($_SESSION['signup_success']) && $_SESSION['signup_success'] === true) {
+    $show_signup_modal = true;
+    $signup_name = isset($_SESSION['signup_name']) ? $_SESSION['signup_name'] : '';
+    // Clear the session variables
+    unset($_SESSION['signup_success']);
+    unset($_SESSION['signup_name']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Mengambil data daripada Borang
     $notel      =   mysqli_real_escape_string($condb, $_POST['notel']);
@@ -19,11 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['notel']          = $row['notel'];
         $_SESSION['nama']          = $row['nama'];
         $_SESSION['jenis_pengguna'] = $row['jenis_pengguna'];
-
-        echo "<script> 
-                alert('Login berjaya! Selamat datang.'); 
-                window.location.href='index.php';
-              </script>";
+        
+        // Store success message in session
+        $_SESSION['login_success'] = true;
+        $_SESSION['welcome_name'] = htmlspecialchars($row['nama']);
+        
+        // Redirect immediately
+        header("Location: index.php");
         exit;
     } else {
         $err = "<div class='alert alert-danger'>
@@ -95,12 +108,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="text-center mt-3">
             <p style="color: var(--text-light);">
                 Belum mempunyai akaun? 
-                <a href="signup.php" style="color: var(--primary-dark); font-weight: 600; transition: color 0.3s ease;" onmouseover="this.style.color='#1e3a8a'" onmouseout="this.style.color='var(--primary-dark)'">
+                <a href="signup.php" style="color: var(--primary-color); font-weight: 600; transition: color 0.3s ease;" onmouseover="this.style.color='var(--primary-dark)'" onmouseout="this.style.color='var(--primary-color)'">
                     Daftar di sini
                 </a>
             </p>
         </div>
     </div>
 </div>
+
+<?php if ($show_signup_modal): ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    showModal('success', 'Pendaftaran Berjaya!', 'Selamat datang <?php echo $signup_name; ?>! Akaun anda telah berjaya didaftarkan. Sila log masuk.', null, false);
+});
+</script>
+<?php endif; ?>
 
 <?php include('footer.php'); ?>

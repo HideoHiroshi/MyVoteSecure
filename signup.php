@@ -10,28 +10,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Data validation : had atas
     if(strlen($notel) > 13){
-        die("<script>
-                alert('No Telefon tidak boleh melebihi 13 digit');
-                window.history.back();
-            </script>" ); 
+        echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showModal('error', 'Ralat Pendaftaran', 'No Telefon tidak boleh melebihi 13 digit', null, false);
+            setTimeout(function() { window.history.back(); }, 2000);
+        });
+        </script>";
+        exit;
     }
 
     # Data validation : had bawah
     if(strlen($notel) < 10){
-        die("<script>
-                alert('No Telefon mestilah sekurang-kurangnya 10 digit');
-                window.history.back();
-            </script>" ); 
+        echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showModal('error', 'Ralat Pendaftaran', 'No Telefon mestilah sekurang-kurangnya 10 digit', null, false);
+            setTimeout(function() { window.history.back(); }, 2000);
+        });
+        </script>";
+        exit;
     }
 
      # Semak notel dah wujud atau belum
     $sql_semak  =   "SELECT notel FROM pengguna WHERE notel = '$notel'";
     $laksana_semak  =   mysqli_query($condb, $sql_semak);
     if(mysqli_num_rows($laksana_semak) == 1){
-        die("<script>
-                alert('No Telefon telah digunakan. Sila gunakan No Telefon yang lain');
-                window.history.back();
-            </script>"); 
+        echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showModal('warning', 'No Telefon Telah Wujud', 'No Telefon telah digunakan. Sila gunakan No Telefon yang lain', null, false);
+            setTimeout(function() { window.history.back(); }, 2000);
+        });
+        </script>";
+        exit;
     }
 
     // Simpan data pengguna baru
@@ -39,15 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               VALUES ('$notel', '$nama', '$katalaluan', 'pengundi')";
     
     if (mysqli_query($condb, $query)) {
-        echo "<script>
-                 alert('Pendaftaran Berjaya! Sila log masuk.');
-                 window.location.href='login.php';
-              </script>";
+        // Store success message in session
+        $_SESSION['signup_success'] = true;
+        $_SESSION['signup_name'] = htmlspecialchars($nama);
+        
+        // Redirect to login page
+        header("Location: login.php");
+        exit;
     } else {
         echo "<script>
-                alert('Pendaftaran gagal. Sila cuba lagi.');
-                window.history.back();
-              </script>";
+        document.addEventListener('DOMContentLoaded', function() {
+            showModal('error', 'Pendaftaran Gagal', 'Maaf, pendaftaran gagal. Sila cuba lagi.', null, false);
+            setTimeout(function() { window.history.back(); }, 2000);
+        });
+        </script>";
     }
 }
 ?>

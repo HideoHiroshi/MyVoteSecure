@@ -3,6 +3,17 @@ session_start();
 include('header.php');
 include('connection.php');
 
+// Check if user just logged in successfully
+$show_login_modal = false;
+$welcome_name = '';
+if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
+    $show_login_modal = true;
+    $welcome_name = isset($_SESSION['welcome_name']) ? $_SESSION['welcome_name'] : '';
+    // Clear the session variables so modal doesn't show again
+    unset($_SESSION['login_success']);
+    unset($_SESSION['welcome_name']);
+}
+
 // Calculate voting status
 $tarikh_tamat = strtotime($tarikh);
 $tarikh_sekarang = strtotime(date("Y-m-d H:i:s"));
@@ -172,5 +183,13 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
 </style>
+
+<?php if ($show_login_modal): ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    showModal('success', 'Login Berjaya!', 'Selamat datang, <?php echo $welcome_name; ?>!', null, false);
+});
+</script>
+<?php endif; ?>
 
 <?php include('footer.php'); ?>
