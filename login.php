@@ -55,8 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     class="form-control" 
                     placeholder="Contoh: 0123456789"
                     required
-                    pattern="[0-9]{10,13}"
-                    title="Nombor telefon mestilah 10-13 digit"
                 >
             </div>
 
@@ -64,13 +62,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label class="form-label">
                     <i class="fas fa-lock"></i> Katalaluan
                 </label>
-                <input 
-                    type="password" 
-                    name="katalaluan" 
-                    class="form-control" 
-                    placeholder="Masukkan katalaluan anda"
-                    required
-                >
+                <div style="position: relative;">
+                    <input 
+                        type="password" 
+                        name="katalaluan" 
+                        id="password-login"
+                        class="form-control" 
+                        placeholder="Masukkan katalaluan anda"
+                        required
+                        style="padding-right: 45px;"
+                    >
+                    <button 
+                        type="button" 
+                        onclick="togglePassword('password-login', this)"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-light); font-size: 1.2rem; padding: 5px;"
+                        title="Tunjuk/Sembunyi Katalaluan"
+                    >
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="form-group">

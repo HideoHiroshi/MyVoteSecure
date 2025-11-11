@@ -100,16 +100,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label class="form-label">
                     <i class="fas fa-lock"></i> Katalaluan
                 </label>
-                <input 
-                    type="password" 
-                    name="katalaluan" 
-                    class="form-control" 
-                    placeholder="Cipta katalaluan yang kuat"
-                    required
-                    minlength="6"
-                >
+                <div style="position: relative;">
+                    <input 
+                        type="password" 
+                        name="katalaluan" 
+                        id="password-signup"
+                        class="form-control" 
+                        placeholder="Cipta katalaluan yang kuat"
+                        required
+                        minlength="6"
+                        style="padding-right: 45px;"
+                    >
+                    <button 
+                        type="button" 
+                        onclick="togglePassword('password-signup', this)"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-light); font-size: 1.2rem; padding: 5px;"
+                        title="Tunjuk/Sembunyi Katalaluan"
+                    >
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
                 <small style="color: var(--text-light); display: block; margin-top: 5px;">
-                    * Katalaluan mestilah sekurang-kurangnya 6 aksara
+                    * Katalaluan mestilah sekurang-kurangnya 6 huruf
                 </small>
             </div>
 
