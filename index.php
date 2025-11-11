@@ -30,14 +30,24 @@ $days_remaining = ceil(($tarikh_tamat - $tarikh_sekarang) / (60 * 60 * 24));
             if (!empty($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "admin" && !empty($_SESSION['nama'])) {
                 echo "Selamat Datang " . htmlspecialchars($_SESSION['nama']);
             } elseif (!empty($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "pengundi" && !empty($_SESSION['nama'])) {
-                echo "Selamat Datang Anda Boleh Mula Mengundi Sekarang";
+                if ($voting_active) {
+                    echo "Selamat Datang Anda Boleh Mula Mengundi Sekarang";
+                } else {
+                    echo "Selamat Datang " . htmlspecialchars($_SESSION['nama']);
+                }
             } else {
                 echo "Selamat Datang ke MyVoteSecure";
             }
             ?>
         </h2>
         <p style="font-size: 1.4rem; margin: 0;">
-            Sistem Undian Online yang Selamat dan Mudah
+            <?php 
+            if (!empty($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "pengundi" && !$voting_active) {
+                echo "Tempoh Pengundian Telah Tamat. Terima Kasih Atas Penyertaan Anda";
+            } else {
+                echo "Sistem Undian Online yang Selamat dan Mudah";
+            }
+            ?>
         </p>
     </div>
 
